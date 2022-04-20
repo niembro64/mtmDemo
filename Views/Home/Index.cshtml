@@ -21,6 +21,10 @@
         </div>
         <div class="col-6">
             <h2>Actors</h2>
+            @foreach (Actor a in ViewBag.AllActors)
+            {
+                <p><a href="/actor/@a.ActorId">@a.Name</a></p>
+            }
         </div>
     </div>
 </div>
