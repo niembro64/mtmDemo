@@ -33,7 +33,8 @@ namespace mtmDemo.Controllers
     [HttpGet("actor/{actId}")]
     public IActionResult OneActor(int actId)
     {
-      ViewBag.OneActor = _context.Actors.FirstOrDefault(a => a.ActorId == actId);
+      ViewBag.OneActor = _context.Actors.Include(s => s.MoviesActedIn).ThenInclude(d => d.Movie).FirstOrDefault(a => a.ActorId == actId);
+      //   ViewBag.OneActor = _context.Actors.FirstOrDefault(a => a.ActorId == actId);
       ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
       ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
 
@@ -49,7 +50,8 @@ namespace mtmDemo.Controllers
     [HttpGet("movie/{movId}")]
     public IActionResult OneMovie(int movId)
     {
-      ViewBag.OneMovie = _context.Movies.FirstOrDefault(a => a.MovieId == movId);
+      ViewBag.OneMovie = _context.Movies.Include(s => s.ListOfActors).ThenInclude(d => d.Actor).FirstOrDefault(a => a.MovieId == movId);
+    //   ViewBag.OneMovie = _context.Movies.FirstOrDefault(a => a.MovieId == movId);
       ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
       ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
 

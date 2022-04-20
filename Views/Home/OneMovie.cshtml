@@ -6,6 +6,10 @@
 <div class="row">
   <div class="col-6">
     <h3>Actors in Movie</h3>
+     @foreach (Cast c in ViewBag.OneMovie.ListOfActors)
+    {
+      <h4>@c.Actor.Name</h4>
+    }
   </div>
   <div class="col-6">
     <form action="/cast/add" method="post">
