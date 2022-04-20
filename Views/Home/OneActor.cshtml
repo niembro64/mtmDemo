@@ -1,1 +1,27 @@
+@model Cast
+
 <h1>@ViewBag.OneActor.Name</h1>
+
+<div class="row">
+  <div class="col-6">
+    <h3>Movies Acted In</h3>
+  </div>
+  <div class="col-6">
+    <form action="/cast/add" method="post">
+      <input type="hidden" asp-for="ActorId" value="@ViewBag.OneActor.ActorId">
+      <div class="form-group">
+        <label for="MovieId">Movie Options</label>
+        <select asp-for="MovieId" class="form-control">
+          @foreach (Movie m in @ViewBag.AllMovies)
+          {
+            <option value="@m.MovieId">@m.Title (@m.ReleaseYear)</option>
+          }
+
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</div>

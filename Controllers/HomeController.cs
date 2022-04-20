@@ -57,6 +57,18 @@ namespace mtmDemo.Controllers
     }
     //////////////////////////
 
+    [HttpPost("cast/add")]
+    public IActionResult AddCast(Cast newCast)
+    {
+
+      _context.Casts.Add(newCast);
+      _context.SaveChanges();
+
+      ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
+      ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
+      return RedirectToAction("Index");
+
+    }
     [HttpPost("actor/add")]
     public IActionResult AddActor(Actor newActor)
     {
@@ -76,6 +88,8 @@ namespace mtmDemo.Controllers
         return View("Index");
       }
     }
+
+
     [HttpPost("movie/add")]
     public IActionResult AddMovie(Movie newMovie)
     {
