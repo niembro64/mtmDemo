@@ -14407,6 +14407,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.2\\mtmDemo\\Views\\Home\\Movies.cshtml",
+      "TargetPath": "Views\\Home\\Movies.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\nieme\\Documents\\CodingDojo\\CSharpStack2022\\3.2\\mtmDemo\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"

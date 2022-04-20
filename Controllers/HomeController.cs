@@ -27,6 +27,12 @@ namespace mtmDemo.Controllers
       return View();
     }
 
+    public IActionResult Movies()
+    {
+      return View();
+    }
+
+
     public IActionResult Privacy()
     {
       return View();

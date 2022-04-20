@@ -58,3 +58,4 @@ C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.2\mtmDemo\obj\Debug\netcor
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.2\mtmDemo\obj\Debug\netcoreapp3.1\mtmDemo.dll
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.2\mtmDemo\obj\Debug\netcoreapp3.1\mtmDemo.pdb
 C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.2\mtmDemo\obj\Debug\netcoreapp3.1\mtmDemo.genruntimeconfig.cache
+C:\Users\nieme\Documents\CodingDojo\CSharpStack2022\3.2\mtmDemo\obj\Debug\netcoreapp3.1\Razor\Views\Home\Movies.cshtml.g.cs
