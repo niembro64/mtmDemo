@@ -6,20 +6,26 @@
 <div class="row">
   <div class="col-6">
     <h3>Actors in Movie</h3>
-     @foreach (Cast c in ViewBag.OneMovie.ListOfActors)
+    @foreach (Cast c in ViewBag.OneMovie.ListOfActors)
     {
       <h4>@c.Actor.Name</h4>
     }
   </div>
   <div class="col-6">
     <form action="/cast/add" method="post">
+      <input type="hidden" name="option" value="movie">
       <input type="hidden" asp-for="MovieId" value="@ViewBag.OneMovie.MovieId">
       <div class="form-group">
         <label for="ActorId">Actor Options</label>
         <select asp-for="ActorId" class="form-control">
-          @foreach (Actor m in @ViewBag.AllActors)
+          @* @foreach (Actor m in @ViewBag.AllActors)
           {
             <option value="@m.ActorId">@m.Name</option>
+          } *@
+
+          @foreach (Actor a in ViewBag.AllActorsNotInMovie)
+          {
+            <option value="@a.ActorId">@a.Name</option>
           }
 
         </select>

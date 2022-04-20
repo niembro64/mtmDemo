@@ -36,6 +36,9 @@ namespace mtmDemo.Controllers
       ViewBag.OneActor = _context.Actors.Include(s => s.MoviesActedIn).ThenInclude(d => d.Movie).FirstOrDefault(a => a.ActorId == actId);
       //   ViewBag.OneActor = _context.Actors.FirstOrDefault(a => a.ActorId == actId);
       ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
+
+      ViewBag.AllMoviesWithoutActor = _context.Movies.Include(f => f.ListOfActors).Where(s => s.ListOfActors.All(d => d.ActorId != actId));
+
       ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
 
       return View();
@@ -51,8 +54,9 @@ namespace mtmDemo.Controllers
     public IActionResult OneMovie(int movId)
     {
       ViewBag.OneMovie = _context.Movies.Include(s => s.ListOfActors).ThenInclude(d => d.Actor).FirstOrDefault(a => a.MovieId == movId);
-    //   ViewBag.OneMovie = _context.Movies.FirstOrDefault(a => a.MovieId == movId);
+      //   ViewBag.OneMovie = _context.Movies.FirstOrDefault(a => a.MovieId == movId);
       ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
+      ViewBag.AllActorsNotInMovie = _context.Actors.Include(f => f.MoviesActedIn).Where(s => s.MoviesActedIn.All(d => d.MovieId != movId));
       ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
 
       return View();
@@ -60,15 +64,21 @@ namespace mtmDemo.Controllers
     //////////////////////////
 
     [HttpPost("cast/add")]
-    public IActionResult AddCast(Cast newCast)
+    public IActionResult AddCast(Cast newCast, string option)
     {
-
+      Console.WriteLine($"From : {option}");
       _context.Casts.Add(newCast);
       _context.SaveChanges();
 
       ViewBag.AllActors = _context.Actors.OrderBy(a => a.Name).ToList();
       ViewBag.AllMovies = _context.Movies.OrderBy(a => a.Title).ToList();
-      return RedirectToAction("Index");
+      if (option == "actor")
+      {
+
+        return Redirect($"/actor/{newCast.ActorId}");
+      }
+      return Redirect($"/movie/{newCast.MovieId}");
+
 
     }
     [HttpPost("actor/add")]
