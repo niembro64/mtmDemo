@@ -1,15 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Actors";
 }
+@model Actor
 
 <div class="text-center">
     <div class="row">
 
         <div class="col-6">
             <h2>Add Actor</h2>
+            <form action="/actor/add" method="post">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="submit" class="btn btn-primary">
+                </div>
+            </form>
         </div>
         <div class="col-6">
-            <h2>List of Actor</h2>
+            <h2>Actors</h2>
         </div>
     </div>
 </div>

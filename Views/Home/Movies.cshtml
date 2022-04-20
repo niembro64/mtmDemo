@@ -1,15 +1,31 @@
 @{
-    ViewData["Title"] = "Actors";
+    ViewData["Title"] = "Movies";
 }
+@model Movie
 
 <div class="text-center">
     <div class="row">
 
         <div class="col-6">
             <h2>Add Movie</h2>
+              <form action="/movie/add" method="post">
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <input asp-for="Title" class="form-control">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ReleaseYear">ReleaseYear</label>
+                    <input asp-for="ReleaseYear" class="form-control">
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="submit" class="btn btn-primary">
+                </div>
+            </form>
         </div>
         <div class="col-6">
-            <h2>List of Movies</h2>
+            <h2>Movies</h2>
         </div>
     </div>
 </div>

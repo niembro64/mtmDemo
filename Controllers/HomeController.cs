@@ -32,10 +32,35 @@ namespace mtmDemo.Controllers
       return View();
     }
 
+    //////////////////////////
 
-    public IActionResult Privacy()
+    [HttpPost("actor/add")]
+    public IActionResult AddActor(Actor newActor)
     {
-      return View();
+      if (ModelState.IsValid)
+      {
+        _context.Actors.Add(newActor);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+      }
+      else
+      {
+        return View("Index");
+      }
+    }
+    [HttpPost("movie/add")]
+    public IActionResult AddMovie(Movie newMovie)
+    {
+      if (ModelState.IsValid)
+      {
+        _context.Movies.Add(newMovie);
+        _context.SaveChanges();
+        return RedirectToAction("Movies");
+      }
+      else
+      {
+        return View("Movies");
+      }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
